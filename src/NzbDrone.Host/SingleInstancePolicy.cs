@@ -30,12 +30,12 @@ namespace NzbDrone.Host
 
         public void PreventStartIfAlreadyRunning()
         {
-            if (IsAlreadyRunning())
-            {
-                _logger.Warn("Another instance of Sonarr is already running.");
-                _browserService.LaunchWebUI();
-                throw new TerminateApplicationException("Another instance is already running");
-            }
+            // if (IsAlreadyRunning() && false)
+            // {
+            //     _logger.Warn("Another instance of Sonarr is already running.");
+            //     _browserService.LaunchWebUI();
+            //     throw new TerminateApplicationException("Another instance is already running");
+            // }
         }
 
         public void KillAllOtherInstance()

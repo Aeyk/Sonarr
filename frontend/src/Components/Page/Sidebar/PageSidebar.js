@@ -150,6 +150,10 @@ const links = [
         statusComponent: HealthStatusConnector
       },
       {
+        title: () => translate('Users'),
+        to: '/system/users'
+      },
+      {
         title: () => translate('Tasks'),
         to: '/system/tasks'
       },

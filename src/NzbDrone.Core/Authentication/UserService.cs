@@ -13,7 +13,7 @@ namespace NzbDrone.Core.Authentication
 {
     public interface IUserService
     {
-        User Add(string username, string password);
+        User Add(string username, string password, int roleId = (int)Role.User);
         User Update(User user);
         User Upsert(string username, string password);
         User FindUser();
@@ -38,12 +38,13 @@ namespace NzbDrone.Core.Authentication
             _diskProvider = diskProvider;
         }
 
-        public User Add(string username, string password)
+        public User Add(string username, string password, int roleId = 1)
         {
             var user = new User
             {
                 Identifier = Guid.NewGuid(),
-                Username = username.ToLowerInvariant()
+                Username = username.ToLowerInvariant(),
+                RoleId = roleId
             };
 
             SetUserHashedPassword(user, password);
@@ -184,7 +185,8 @@ namespace NzbDrone.Core.Authentication
             var username = usernameElement.Value;
             var password = passwordElement.Value;
 
-            Add(username, password);
+            // Is Handle called once on startup?
+            Add(username, password, (int)Role.Admin);
         }
     }
 }

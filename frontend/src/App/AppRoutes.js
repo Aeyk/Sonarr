@@ -29,6 +29,7 @@ import BackupsConnector from 'System/Backup/BackupsConnector';
 import LogsTableConnector from 'System/Events/LogsTableConnector';
 import Logs from 'System/Logs/Logs';
 import Status from 'System/Status/Status';
+import Users from 'System/Users/Users';
 import Tasks from 'System/Tasks/Tasks';
 import Updates from 'System/Updates/Updates';
 import getPathWithUrlBase from 'Utilities/getPathWithUrlBase';
@@ -234,6 +235,11 @@ function AppRoutes(props) {
       <Route
         path="/system/status"
         component={Status}
+      />
+
+      <Route
+        path="/system/users"
+        component={Users}
       />
 
       <Route
